@@ -17,7 +17,7 @@
 	</div>
 	{#if visible}
 		<div
-			class="flex w-full h-full justify-center items-center"
+			class="flex w-full h-full justify-center items-center flex-col"
 			transition:fade={{ duration: 2500 }}
 		>
 			<p
@@ -26,6 +26,19 @@
 			>
 				{text}
 			</p>
+			<a class="pt-10" href="/">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="1.0"
+					stroke="currentColor"
+					class="w-16 h-16 text-neutral-50 transition ease-in-out delay-150 hover:text-blue-600"
+					transition:fade={{ duration: 3000 }}
+				>
+					<path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+				</svg>
+			</a>
 		</div>
 	{/if}
 </div>
