@@ -20,14 +20,19 @@ export const GET = (async ({ url, cookies }) => {
 	});
 	if (!user) {
 		user = await prismaClient.user.create({
-			data: { kakaoID: kakaoUser.id.toString(), name: kakaoUser.kakao_account.profile.nickname }
+			data: {
+				kakaoID: kakaoUser.id.toString(),
+				password: kakaoUser.id.toString(),
+				email: 'kakao-' + kakaoUser.id.toString(),
+				name: kakaoUser.kakao_account.profile.nickname
+			}
 		});
 	}
-	const token = jwt.sign({ id: user.id, name: user.name }, 'secret', {
+	const token = jwt.sign({ name: user.name }, 'secret', {
 		expiresIn: '1h'
 	});
-	cookies.set('session', token);
+	cookies.set('newSession', token);
 
-	throw redirect(302, '/mainpage');
+	throw redirect(302, '/');
 	// TODO: 카카오 유저로 로그인 로직 처리
 }) satisfies RequestHandler;
