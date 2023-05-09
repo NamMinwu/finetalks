@@ -13,7 +13,9 @@ datasource db {
 model User{
   id Int @unique @default(autoincrement())
   name String?
-  kakaoID String @unique
+  kakaoID String? @unique
+  password String
+  email String @unique
   createdAt DateTime @default(now())
   updatedAt  DateTime @updatedAt
 }
