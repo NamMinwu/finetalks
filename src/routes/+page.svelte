@@ -1,16 +1,31 @@
-<script lang="ts">
-	function onKakaoLogin() {
-		// 카카오 로그인 버튼을 눌렀을 때 동작하는 함수
-		Kakao.Auth.authorize({
-			redirectUri: 'http://localhost:5173/oauth' // 카카오 로그인 후 리다이렉트 될 주소
-		});
-	}
+<script>
+	import { onMount } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
+	let visible = false;
+	let text = '이별로 인해 힘든 여러분들을 위해 \n작게 나마 하소연 할 공간을 마련해 봤습니다.';
+	onMount(() => {
+		visible = true;
+	});
 </script>
 
-<button on:click={onKakaoLogin}>
-	<img
-		src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg"
-		width="222"
-		alt="카카오 로그인 버튼"
-	/>
-</button>
+<div class="flex flex-col bg-gradient-to-b from-black from 70% to-indigo-950 to 30% h-screen p-10">
+	<div class="flex w-full h-24 justify-between items-center px-10">
+		<div>
+			<p class="text-xl text-yellow-100 font-courgette p">fine talk</p>
+		</div>
+		<a class="text-white font-courgette text-xl" href="login">Login</a>
+	</div>
+	{#if visible}
+		<div
+			class="flex w-full h-full justify-center items-center"
+			transition:fade={{ duration: 2500 }}
+		>
+			<p
+				class="text-center leading-relaxed font-mood text-neutral-50 text-4xl max-2xl:whitespace-pre-line max-2xl:text-3xl transition-all"
+				in:fly={{ y: 100, duration: 2500 }}
+			>
+				{text}
+			</p>
+		</div>
+	{/if}
+</div>
