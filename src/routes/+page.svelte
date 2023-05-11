@@ -26,7 +26,7 @@
 			>
 				{text}
 			</p>
-			<a class="pt-10" href="/">
+			<a class="pt-10" href="chat">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
